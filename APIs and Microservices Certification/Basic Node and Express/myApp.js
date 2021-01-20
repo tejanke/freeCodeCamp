@@ -2,6 +2,7 @@
 var express = require('express');
 var app = express();
 
+//----------------------------------
 /*
 app.get('/', function (req, res)  {
   //res.send("Hello Express")
@@ -9,14 +10,17 @@ app.get('/', function (req, res)  {
 })
 */
 
+//----------------------------------
 /*
 path = __dirname + "/public"
 app.use("/", express.static(path))
 */
 
+//----------------------------------
+/*
 process.env.MESSAGE_STYLE = "uppercase";
 
-var data = { "message": "Hello json" }
+var data = {"message": "Hello json"}
 
 app.get('/json', function (req, res) {
   if (process.env.MESSAGE_STYLE === "uppercase") {
@@ -24,10 +28,16 @@ app.get('/json', function (req, res) {
     res.json(data)
   }
   else {
-    res.json(data)
+  res.json(data)
   }
 })
+*/
 
-console.log("Hello World")
+//----------------------------------
+app.use("/", function (req, res, next) {
+  console.log(req.method, req.path, "-", req.ip)
+  next();
+}
+)
 
 module.exports = app;

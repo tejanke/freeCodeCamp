@@ -34,10 +34,23 @@ app.get('/json', function (req, res) {
 */
 
 //----------------------------------
-app.use("/", function (req, res, next) {
+/*
+app.use("/", function(req, res, next) {
   console.log(req.method, req.path, "-", req.ip)
   next();
 }
 )
+
+console.log("Hello World")
+*/
+
+//----------------------------------
+app.get('/now', function (req, res, next) {
+  req.time = new Date().toString()
+  next();
+}, function (req, res) {
+  var now = { "time": req.time }
+  res.json(now)
+})
 
 module.exports = app;

@@ -44,13 +44,23 @@ app.use("/", function(req, res, next) {
 console.log("Hello World")
 */
 
+/*
 //----------------------------------
 app.get('/now', function (req, res, next) {
   req.time = new Date().toString()
   next();
-}, function (req, res) {
-  var now = { "time": req.time }
+}, function(req, res) {
+  var now = {"time": req.time}
   res.json(now)
+})
+*/
+
+//----------------------------------
+var data = { "echo": "" }
+app.get('/:word/echo', function (req, res) {
+  console.log(req.params)
+  data.echo = req.params.word
+  res.json(data)
 })
 
 module.exports = app;

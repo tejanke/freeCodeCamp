@@ -55,11 +55,22 @@ app.get('/now', function (req, res, next) {
 })
 */
 
+/*
 //----------------------------------
-var data = { "echo": "" }
+var data = {"echo": ""}
 app.get('/:word/echo', function (req, res) {
   console.log(req.params)
   data.echo = req.params.word
+  res.json(data)
+})
+*/
+
+//----------------------------------
+app.get('/name', function (req, res) {
+  console.log(req.query)
+  var firstname = req.query.first
+  var lastname = req.query.last
+  var data = { "name": firstname + " " + lastname }
   res.json(data)
 })
 

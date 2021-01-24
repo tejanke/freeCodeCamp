@@ -1,6 +1,7 @@
 
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 //----------------------------------
 /*
@@ -65,13 +66,19 @@ app.get('/:word/echo', function (req, res) {
 })
 */
 
+/*
 //----------------------------------
 app.get('/name', function (req, res) {
   console.log(req.query)
   var firstname = req.query.first
   var lastname = req.query.last
-  var data = { "name": firstname + " " + lastname }
+  var data = {"name": firstname + " " + lastname}
   res.json(data)
 })
+*/
+
+//----------------------------------
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 module.exports = app;

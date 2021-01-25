@@ -77,8 +77,21 @@ app.get('/name', function (req, res) {
 })
 */
 
+/*
 //----------------------------------
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+*/
+
+//----------------------------------
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.post('/name', function (req, res) {
+  console.log(req.body)
+  var firstname = req.body.first
+  var lastname = req.body.last
+  var data = { "name": firstname + " " + lastname }
+  res.json(data)
+})
 
 module.exports = app;

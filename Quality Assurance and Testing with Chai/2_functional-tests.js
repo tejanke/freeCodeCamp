@@ -64,6 +64,12 @@ suite("Functional Tests", function () {
 
 const Browser = require("zombie");
 
+const browser = new Browser();
+
+suiteSetup(function (done) {
+    return browser.visit('/', done);
+});
+
 suite("Functional Tests with Zombie.js", function () {
 
     suite('"Famous Italian Explorers" form', function () {
